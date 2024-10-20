@@ -1,22 +1,21 @@
-body {
+.body {
     background-color: #FBE5C8;
+}
+.heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 h1 {
     font-size: 56px; text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 h2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 44px;
     font-weight: normal;
 }
 h3 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     font-size: 36px;
     font-weight: normal;
-}
-h4, h5, h6 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 p {
     font-family: Arial, Helvetica, sans-serif;
@@ -27,4 +26,5 @@ a {
 }
 .dev-info {
     text-align: right;
+    font-style: 30px;
 }
