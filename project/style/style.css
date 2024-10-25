@@ -29,3 +29,18 @@
 .nav-item {
     display: block;
 }
+.block {
+    display: block;
+}
+.inline {
+    display: inline;
+}
+.nav-none-markers {
+    list-style-type: none;
+}
+.nav-square-markers {
+    list-style-type: square;
+}
+.nav-circle-markers {
+    list-style-type: circle;
+}
