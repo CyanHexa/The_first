@@ -40,7 +40,16 @@
 }
 .nav-square-markers {
     list-style-type: square;
+    padd: 15px;
 }
 .nav-circle-markers {
     list-style-type: circle;
+}
+* {
+    margin: 0;
+    padding: 30;
+    box-sizing: border-box;
+}
+.header {
+    margin-bottom: 20px;
 }
