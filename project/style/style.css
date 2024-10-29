@@ -35,15 +35,9 @@
 .inline {
     display: inline;
 }
-.nav-none-markers {
-    list-style-type: none;
-}
 .nav-square-markers {
     list-style-type: square;
-    padd: 15px;
-}
-.nav-circle-markers {
-    list-style-type: circle;
+    padding: 15px;
 }
 * {
     margin: 0;
