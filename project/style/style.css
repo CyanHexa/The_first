@@ -1,10 +1,10 @@
-.body {
-    background-color: #FBE5C8;
-}
 * {
     margin: 0;
     padding: 30;
     box-sizing: border-box;
+}
+.body {
+    background-color: #FBE5C8;
 }
 .heading {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
