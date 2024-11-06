@@ -1,6 +1,14 @@
 .body {
     background-color: #FBE5C8;
 }
+* {
+    margin: 0;
+    padding: 30;
+    box-sizing: border-box;
+}
+.heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .main-heading {
     font-size: 56px;
     text-align: center;
@@ -13,9 +21,6 @@
     font-size: 36px;
     font-weight: normal;
 }
-.heading {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 .txt {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -26,9 +31,7 @@
     text-align: right;
     font-style: 30px;
 }
-.nav-item {
-    display: block;
-}
+.nav-item,
 .block {
     display: block;
 }
@@ -38,11 +41,6 @@
 .nav-square-markers {
     list-style-type: square;
     padding: 15px;
-}
-* {
-    margin: 0;
-    padding: 30;
-    box-sizing: border-box;
 }
 .header {
     margin-bottom: 20px;
