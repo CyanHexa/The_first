@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+.main-heading {
+    font-size: 56px ;
+}
 body {
     padding: 30px;
     margin: 0;
@@ -6,28 +17,31 @@ body {
     max-width: 1600px;
     min-width: 720px;
     box-sizing: border-box;
+    background-color: #00ffd2;
 }
 .heading {
     margin-bottom: 20px;
 }
 .card {
-    border: 2px solid black;
+    border: 5px purple dashed;
+    border-radius: 20px 20px;
     width: 600px;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
+    background-color: peachpuff;
 }
 .card-img {  
     display: block;
-    width: 100%;
+    width: 30%;
     margin-bottom: 10px;
+    margin-right: 10px;
+    float: left;
 }
 .txt {
-    font-family: sans-serif;
+    font-size: 20px;
 }
 .card-title {
     font-weight: bold;
-}
-p {
-    margin: 0;
+    font-size: 30px;
 }
