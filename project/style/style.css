@@ -45,3 +45,19 @@
 .header {
     margin-bottom: 20px;
 }
+.nav-item {
+    display: block;
+    margin-left: 20px;
+}
+.nav {
+    list-style-type: circle;
+}
+.main {
+    margin-bottom: 20px;
+}
+.img-float {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+}
