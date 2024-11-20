@@ -3,7 +3,7 @@
     padding: 30;
     box-sizing: border-box;
 }
-.body {
+body {
     background-color: #FBE5C8;
 }
 .heading {
@@ -42,7 +42,7 @@
     list-style-type: square;
     padding: 15px;
 }
-.header {
+.main-header {
     margin-bottom: 20px;
 }
 .nav-item {
@@ -57,7 +57,20 @@
 }
 .img-float {
     float: left;
+    width: 200px;
     margin-right: 10px;
     margin-bottom: 10px;
-    width: 50%;
+}
+.main-container {
+    background-color: powderblue;
+    padding: 20px;
+    border-radius: 20px;
+}
+.main-footer {
+    margin: 0;
+    padding: 0;
+}
+.main-header {
+    position: sticky;
+    top: 0;
 }
