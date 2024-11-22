@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    padding: 30;
+    padding: 0;
     box-sizing: border-box;
 }
 body {
@@ -29,7 +29,7 @@ body {
 }
 .dev-info {
     text-align: right;
-    font-style: 30px;
+    font-size: 30px;
 }
 .nav-item,
 .block {
@@ -42,14 +42,11 @@ body {
     list-style-type: square;
     padding: 15px;
 }
-.main-header {
-    margin-bottom: 20px;
-}
-.nav-item {
+.main-nav-item {
     display: block;
     margin-left: 20px;
 }
-.nav {
+.main-nav {
     list-style-type: circle;
 }
 .main {
@@ -68,9 +65,9 @@ body {
 }
 .main-footer {
     margin: 0;
-    padding: 0;
 }
 .main-header {
     position: sticky;
     top: 0;
+    margin-bottom: 20px;
 }
