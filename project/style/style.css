@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 body {
+    padding: 30px;
     background-color: #FBE5C8;
 }
 .heading {
