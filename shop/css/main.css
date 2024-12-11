@@ -18,9 +18,11 @@ html {
     flex-direction: column;
     align-content: stretch;
     gap: 20px;
+    min-width: 100%;
 }
 
 .main-container {
+    /* margin: 0 auto; */
     background-color: #fff;
     padding: 30px;
     border-radius: 20px;
@@ -42,7 +44,16 @@ html {
 
 }
 
-.main-header-item {
+.item {
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.main-title {
+    font-size: 44px;
+}
+
+.main-nav {
 
 }
 
@@ -53,10 +64,6 @@ html {
 }
 
 .main-header-nav {
-
-}
-
-.main-header-item {
 
 }
 
@@ -74,6 +81,39 @@ html {
     background-color: #00ffd2;
     color: #fff;
 }
+
 .btn:active {
     transform: scale(0.9);
+}
+
+.main-heading {
+    font-size: 44px;
+}
+
+.sub-heading {
+    font-size: 36px;
+}
+
+.suber-heading {
+    font-size: 28px;
+}
+
+.link {
+    transition: ease-in-out 100ms;
+}
+
+.link:hover {
+    color: red;
+}
+
+.link:active {
+    transform: scale(0.9);
+}
+
+.one-column-flex-container {
+    flex-direction: column;
+}
+
+.one-line-flex-container {
+    flex-direction: row;
 }
