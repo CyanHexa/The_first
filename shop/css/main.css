@@ -27,6 +27,7 @@
 }
 
 .btn {
+    grid-area: btn;
     text-decoration: none;
     border: 2px solid #00ffd2;
     padding: 10px 20px;
@@ -62,8 +63,6 @@
 .three-column-grid-condainer{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* tmp */
-    grid-auto-rows: 100px;
     gap: 20px;
 }
 
@@ -103,12 +102,29 @@
 }
 
 .card{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "img title"
+    "img price"
+    "txt txt"
+    "btn btn";
     background-color: #00ffd2;
     color: #000;
     padding: 20px;
     border-radius: 15px;
-    /* tmp */
-    height: 100px;
+    box-shadow: 5px 5px 5px #005748;
+}
+
+.card > .btn{
+    color: #000;
+    border: 2px solid #000;
+}
+
+.card > .btn:hover {
+    background-color: #000;
+    color: #00ffd2;
 }
 
 .main-footer {
@@ -125,5 +141,25 @@
 }
 
 .suber-heading {
+    grid-area: title;
     font-size: 28px;
+    font-weight: bold;
+    color: #000;
+}
+
+.txt {
+    grid-area: txt;
+    color: #000;
+}
+
+.img{
+    grid-area: img;
+    display: block;
+    width: 100%;
+}
+
+.card-price{
+    grid-area: price;
+    color: #000;
+    font-size: 24px;
 }
