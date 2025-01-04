@@ -1,25 +1,36 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0; 
+}
+
+html {
+    --lightest: #FFFFFF;
+    --light: #80FFE9;
+    --base: #00ffd2;
+    --dark: #008069;
+    --darkest: #000000;
     font-family: "Ubuntu", sans-serif;
-    color: #00ffd2;
+    color: var(--base);
 }
 
 .main-heading {
     text-decoration: none;
-    color: #00ffd2;
+    color: var(--base);
     font-size: 44px;
+    outline: none;
 }
 
 .link {
+    color: var(--base);
     display: block;
     transition: 100ms ease-in-out;
+    outline: none;
 }
 
 .link:hover {
     transform: scale(1.1);
-    color: #fff;
+    color: var(--lightest);
 }
 
 .link:active {
@@ -27,24 +38,26 @@
 }
 
 [class*="btn"] {
+    color: var(--base);
     grid-area: btn;
     text-decoration: none;
-    border: 2px solid #00ffd2;
+    border: 2px solid var(--base);
     padding: 10px 20px;
     font-size: 20px;
     border-radius: 10px;
     transition: background-color 100ms ease-in-out,
     color 100ms ease-in-out;
+    outline: none;
 }
 
 [class*="btn"]::selection {
-    background-color: #fff;
-    color: #000;
+    background-color: var(--lightest);
+    color: var(--darkest);
 }
 
 [class*="btn"]:hover {
-    background-color: #00ffd2;
-    color: #000;
+    background-color: var(--base);
+    color: var(--darkest);
 }
 
 [class*="btn"]:active {
@@ -72,7 +85,7 @@
 }
 
 .body {
-    background-image: radial-gradient(#00ffd2, #000);
+    background-image: radial-gradient(var(--base), var(--darkest));
     min-height: 100vh;
     padding: 40px;
     align-content: stretch;
@@ -82,10 +95,10 @@
 .main-container {
     width: 100%;
     margin: 0 auto;
-    background-color: #000;
+    background-color: var(--darkest);
     padding: 30px;
     border-radius: 20px;
-    border: 5px solid #00ffd2;
+    border: 5px solid var(--base);
     min-width: 720px;
     max-width: 1600px;
 }
@@ -115,23 +128,23 @@
     "img price"
     "txt txt"
     "btn btn";
-    background-color: #00ffd2;
-    color: #000;
+    background-color: var(--base);
+    color: var(--darkest);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 5px 5px 5px #005748;
+    box-shadow: 5px 5px 5px var(--dark);
     gap: 20px;
 }
 
 .card > .btn{
     text-align: center;
-    color: #000;
-    border: 2px solid #000;
+    color: var(--darkest);
+    border: 2px solid var(--darkest);
 }
 
 .card > .btn:hover {
-    background-color: #000;
-    color: #00ffd2;
+    background-color: var(--darkest);
+    color: var(--base);
 }
 
 .main-footer {
@@ -151,12 +164,12 @@
     grid-area: title;
     font-size: 28px;
     font-weight: bold;
-    color: #000;
+    color: var(--darkest);
 }
 
 .txt {
     grid-area: txt;
-    color: #000;
+    color: var(--darkest);
 }
 
 .img{
@@ -167,6 +180,6 @@
 
 .card-price{
     grid-area: price;
-    color: #000;
+    color: var(--darkest);
     font-size: 24px;
 }
