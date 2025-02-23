@@ -13,6 +13,7 @@
     --text-color: #595959;
     --text-color-light: #8c8c8c;
     --body-color: #fcfcfc;
+    --border-color: hsl(0, 0%, 94%);
 
     --base-width: 1024px;
 }
@@ -26,7 +27,7 @@
 .visually-hidden {
     position: absolute !important;
     width: 1px !important;
-    height: 1px !important ;
+    height: 1px !important;
     margin: -1px !important;
     border: 0 !important;
     padding: 0 !important;
@@ -34,7 +35,7 @@
     clip-path: inset(100%) !important;
     clip: rect(0 0 0 0) !important;
     overflow: hidden !important;
-  }
+}
 
 ul {
     list-style-type: none;
@@ -56,7 +57,7 @@ i {
 
 img {
     display: block;
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -68,13 +69,46 @@ button {
     color: inherit;
 }
 
+.button {
+    transition-duration: .3s;
+    text-transform: uppercase;
+    font-weight: var(--fw-medium);
+}
+
+.tt-uppercase {
+    text-transform: uppercase;
+}
+
+.tt-capitalize {
+    text-transform: capitalize;
+}
+
 .container {
     width: var(--base-width);
     margin-inline: auto;
 }
 
 .section {
-    padding: 6.5rem 1rem;
+    padding: 6.5rem 0 1rem;
+}
+
+.section-title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.section-title::before {
+    display: block;
+    content: "";
+    border-top: 1px solid var(--first-color);
+    width: 4rem;
 }
 
 .body {
@@ -155,7 +189,7 @@ button {
     color: var(--title-color);
     font-weight: var(--fw-medium);
     font-size: 1.25rem;
-    transition: color .1 ease-in-out;
+    transition: color .1s ease-in-out;
 }
 
 .nav-list-link:hover {
@@ -163,6 +197,7 @@ button {
 }
 
 .home-inner {
+    /* background-color: #8c8c8c; */
     position: relative;
     display: grid;
     row-gap: 2.5rem;
@@ -172,10 +207,12 @@ button {
 }
 
 .home-bg-img-container {
-    background-color: var(--first-color);
     order: 1;
+    background-color: var(--first-color);
     width: 480px;
-    transform: translate(1.5rem -6rem);
+    height: 680px;
+    align-items: flex-end;
+    transform: translate(1.5rem, -6rem);
     padding-bottom: 2rem;
     display: flex;
     justify-content: center;
@@ -200,7 +237,7 @@ button {
 }
 
 .home-social-link:hover {
-    color: var(--first-color);
+    color: var(--title-color);
 }
 
 .home-data {
@@ -208,12 +245,91 @@ button {
 }
 
 .home-title {
-  font-size: 2.5rem;
-  font-weight: var(--fw-bold);
-  margin-bottom: 1rem;
-  text-transform: uppercase;  
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
 .home-description {
     margin-bottom: 1.5rem;
+}
+
+.home-price {
+    display: block;
+    color: var(--first-color);
+    font-size: 1.25rem;
+    font-weight: var(--fw-medium);
+    margin-bottom: 3rem;
+}
+
+.home {
+    padding: 0;
+}
+
+.home-button {
+    border: none;
+    background-color: var(--button-color);
+    padding: 1.25rem 2rem;
+    color: var(--body-color);
+
+    box-shadow: 0 12px 24px lightgray;
+}
+
+.home-button:hover {
+    background-color: var(--button-color-alt);
+}
+
+.button-gray {
+    color: var(--title-color);
+    background-color: hsl(0, 0%, 75%);
+}
+
+.button-gray:hover {
+    background-color: hsl(0, 0%, 63%);
+}
+
+.button-small {
+    text-transform: capitalize;
+    padding: 1rem 1.5rem;
+}
+
+.home-btns {
+    display: flex;
+    align-items: center;
+}
+
+.featured-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.featured-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.featured-card-tag {
+    position: absolute;
+    top: 3rem;
+    left: -1rem;
+    padding: .5rem 1rem;
+    background-color: var(--first-color);
+    color: var(--body-color);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    font-size: .875rem;
+    transform: rotate(-90deg);
+}
+
+.featured-card-img {
+    height: 214px;
+
 }
