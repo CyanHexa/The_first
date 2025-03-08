@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --base-year: 5s;
+    --base-radius: 150px;
+
+    --year: var(--base-year);
+    --radius: var(--base-radius);
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+.stars {
+    position: relative;
+    height: 100%;
+    background-size: cover;
+    background-color: #000;
+    background-image: url(../img/stars.png);
+}
+
+@keyframes move-stars {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 5000px 5000px;
+    }
+}
+
+.stars::after {
+    animation-name: move-stars;
+    animation-duration: 120s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: 100%;
+    height: 100%;
+    content: "";
+    display: block;
+    background-image: url(../img/twinkling.png);
+}
+
+.sun {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:
+        translateY(-50%)
+        translateX(-50%);
+}
+
+.orbit-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:
+        translateY(-50%)
+        translateX(-50%);
+}
+
+@keyframes rotate-planet {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.orbit {
+    animation-name: rotate-planet;
+    animation-duration: var(--year);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    width: calc(2 * var(--radius));
+    height: calc(2 * var(--radius));
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.planet {
+    transform: translateX(-50%);
+}
+
+.mars-orbit {
+    --radius: calc(70px + var(--base-radius));
+    --year: calc(1.88 * var(--base-year));
+}
+
+.jupiter-orbit {
+    --radius: calc(140px + var(--base-radius));
+    --year: calc(11.9 * var(--base-year));
+}
+
+.saturn-orbit {
+    --radius: calc(210px + var(--base-radius));
+    --year: calc(29.5 * var(--base-year));
+}
+
+.uranus-orbit {
+    --radius: calc(290px + var(--base-radius));
+    --year: calc(84 * var(--base-year));
+}
+
+.neptune-orbit {
+    --radius: calc(360px + var(--base-radius));
+    --year: calc(165 * var(--base-year));
+}
+
+.pluto-orbit {
+    --radius: calc(430px + var(--base-radius));
+    --year: calc(247.9 * var(--base-year));
+}
