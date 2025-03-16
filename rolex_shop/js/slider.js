@@ -10,15 +10,21 @@ function normalizeSlideNumber(slide) {
     return slide;
 }
 
+
+
 function changeSlide(direction) {
-    if (direction == "left") --activeSlide;
-    else ++activeSlide;
+    if (direction == "left") {
+        --activeSlide;
+    }
+    else {
+        ++activeSlide;
+    }
     activeSlide = normalizeSlideNumber(activeSlide);
     let prev = normalizeSlideNumber(activeSlide - 1);
     let next = normalizeSlideNumber(activeSlide + 1);
     setTimeout(() => {
-        SLIDER_ARROW_LEFT.href = `#slide-${prev}`;
-        SLIDER_ARROW_RIGHT.href = `#slide-${next}`;
+    SLIDER_ARROW_LEFT.href = `#slide-${prev}`
+    SLIDER_ARROW_RIGHT.href = `#slide-${next}`        
     }, 10);
 }
 
@@ -27,5 +33,5 @@ SLIDER_ARROW_LEFT.addEventListener("click", () => {
 });
 
 SLIDER_ARROW_RIGHT.addEventListener("click", () => {
-    changeSlide("right");
+    changeSlide("right")
 });
