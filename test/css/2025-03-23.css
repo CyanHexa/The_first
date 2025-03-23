@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ff-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    --fs-base: 16px;
+
+    --width-base: 1024px;
+
+    --color-dark: #2b2b2b;
+    --color-dark-alt: #363636;
+    --color-grey: #595959;
+    --color-grey-alt: #8c8c8c;
+    --color-light: #fcfcfc;
+    --color-light-alt: #fff;
+    --color-bright: #ffb566;
+
+    --link-color: var(--color-grey);
+    --link-color-alt: var(--color-grey-alt);
+
+    --btn-color: var(--color-light);
+    --btn-color-alt: var(--color-grey);
+
+    --transition-duration: .2s;
+}
+
+html {
+    font-family: var(--ff-base);
+    font-size: var(--fs-base);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+a, input, textarea, select, button {
+    font-family: var(--ff-base);
+    font-size: var(--fs-base);
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--color-dark);
+    font-weight: var(--fw-medium);
+}
+
+.visually-hidden {
+    position: absolute      !important;
+    width: 1px              !important;
+    height: 1px             !important;
+    margin: -1px            !important;
+    border: 0               !important;
+    padding: 0              !important;
+    white-space: nowrap     !important;
+    clip-path: inset(100%)  !important;
+    clip: rect(0 0 0 0)     !important;
+    overflow: hidden        !important;
+}
+
+.link {
+    transition-duration: var(--transition-duration);
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+.link:hover {
+    color: var(--link-color-alt);
+    text-decoration: underline;
+}
