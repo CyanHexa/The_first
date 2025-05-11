@@ -2,6 +2,76 @@ const getElement = (selector) => {
     return document.querySelector(selector)
 }
 
+class Cell {
+    element = null
+    className = 'tic-tac-toe__cell'
+    eventClassName = 'tic-tac-toe__cell--empty'
+    handler = null
+    handlerContext = null
+    handlerArgs = []
+
+    click() {
+        if (this.handler === null) return
+        if (this.handlerContext === null) {
+            this.handler(...this.handlerArgs)
+        }
+        else this.handler.call(
+            this.handlerContext,
+            ...this.handlerArgs
+        )
+        this.deactivate()
+    }
+
+    setHandler(newHandler, context, ...args) {
+        if (typeof newHandler !== 'function') return
+        this.handler = newHandler
+        if (typeof context === 'object') this.handlerContext = context
+        else this.handlerContext = null
+        this.handlerArgs = args
+
+    }
+
+    create() {
+        this.element = document.createElement('div')
+        this.element.classList.add(this.className)
+    }
+
+    activate() {
+        if (this.element === null) return
+        if (this.element.classList.contains(this.activeClassName))
+        //slushatel click
+        this.element.addEventListener('click', this.click)
+        // dobavlyaem class
+        this.element.classList.add(this.activeClassName)
+    }
+
+    deactivate() {
+        if (this.element === null) return
+        if (!this.element.classList.contains(this.activeClassName))
+        //udalaem slushatel click
+        document.removeEventListener('click', this.click)
+        //udalyaem class
+        this.element.classList.remove(this.activeClassName)
+    }
+
+    fill(content) {
+        if (this.element === null) return
+        if (typeof content !== 'string') return
+        this.element.innerHTML = content
+    }
+
+    free() {
+        if (this.element === null) return
+        this.element.innerHTML = ''
+    }
+
+    publish(container) {
+        if (this.element === null) return
+        if (container instanceof HTMLElement) {
+            container.append(this.element)
+        }
+    }
+}
 
 const Field = {
     size: 3,
