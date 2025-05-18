@@ -14,7 +14,8 @@ button {
 }
 
 .btn {
-
+    display: block;
+    background-color: cyan;
 }
 
 .btn-green {
@@ -37,4 +38,40 @@ button {
         (var(--field-size) - 1) * var(--lines-width) +
         var(--field-size) * var(--cell-width)
     );
+
+    box-sizing: content-box;
+    width: var(--field-width);
+    padding: var(--container-padding);
+    border: 2px solid black;
+    border-radius: var(--container-padding);
+}
+
+.tic-tac-toe__header {
+    width: var(--field-width);
+    display: grid;
+    grid-template-columns: 1fr, auto;
+    justify-content: center;
+    gap: .5rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.tic-tac-toe__info {
+    width: var(--field-width);
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(1fr, var(--field-size));
+    grid-template-rows: repeat(1fr, var(--field-size));
+    gap: var(--lines-width);
+    background-color: var(--lines-color);
+}
+
+.tic-tac-toe__cell {
+    padding: 10%;
+    background-color: var(--cell-color);
+    transition-duration: 200ms;
+}
+
+.tic-tac-toe__cell--empty:hover {
+    opacity: .7;
 }
