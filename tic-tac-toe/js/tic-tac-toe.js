@@ -5,6 +5,7 @@ const getElement = (selector) => {
 class Cell {
     element = null
     className = 'tic-tac-toe__cell'
+    winClassName = 'tic-tac-toe__cell--win'
     activeClassName = 'tic-tac-toe__cell--empty'
     handler = null
     handlerContext = null
@@ -16,7 +17,7 @@ class Cell {
     }
 
     _click() {
-        console.log('click')
+        console.log('Click')
         if (this.handler === null) return
         if (this.handlerContext === null) {
             this.handler(...this.handlerArgs)
@@ -29,7 +30,6 @@ class Cell {
     }
 
     setHandler(newHandler, context, ...args) {
-        // console.log(context)
         if (typeof newHandler !== 'function') return
         this.handler = newHandler
         if (typeof context === 'object') this.handlerContext = context
@@ -52,6 +52,7 @@ class Cell {
     }
 
     deactivate() {
+        // console.log('Cell -> deactivate()')
         if (this.element === null) return
         if (!this.element.classList.contains(this.activeClassName)) return
         // удаляем слушатель события "клик"
@@ -77,6 +78,18 @@ class Cell {
             container.append(this.element)
         }
     }
+
+    unpublish() {
+        if (this.element instanceof HTMLElement) {
+            this.element.remove()
+        }
+    }
+
+    // дз
+    addWinClass() {}
+
+    // дз
+    removeWinClass() {}
 }
 
 // const cell = new Cell()
@@ -88,18 +101,19 @@ class Cell {
 
 // field -> Field
 class Field {
-    containerEl = getElement('#tic-tac-toe')
+    containerEl = getElement('#tic-tac-toe__field')
     cells = [[], [], [],]
 
     constructor(handler, context, ...args) {
         this.cells.forEach((line) => {
-            for (let i=0; i<3; i++) {
+            for (let i = 0; i < 3; ++i) {
                 const cell = new Cell()
                 const newArgs = [cell, ...args]
                 cell.create()
                 cell.publish(this.containerEl)
-                cell.setHandler(handler, context, ...args)
+                cell.setHandler(handler, context, ...newArgs)
                 cell.activate()
+                line.push(cell)
             }
         })
     }
@@ -109,21 +123,32 @@ class Field {
     }
 
     deactivate() {
+        // console.log('Field -> deactivate()')
         this.cells.forEach((line) => {
-            line.forEach((cell) => {
-                line.forEach((cell)cell.deactivate()
-            })
+            // console.log('For each line, line:', line)
+            line.forEach((cell) => { cell.deactivate() })
         })
     }
 
+    clear() {
+        this.cells.forEach((line) => {
+            line.forEach((cell) => {
+                cell.free()
+                cell.removeWinClass()
+                cell.unpublish()
+            })
+        })
+    }
 }
 
+// const field = new Field(console.log, null, 'Hello, im cell')
 
 class Game {
     buttonEl = getElement('#tic-tac-toe__btn')
     isActive = false
     field = null
-    activePlayerID = 0
+    activePlayerId = -1
+    winCombinations = []
     players = [
         {// cross
             name: 'Cross',
@@ -138,46 +163,85 @@ class Game {
     ]
 
     constructor() {
-        this.field = new Field(this.turn, this)
-        this.startGame
+        this.startGame()
     }
 
     get activePlayer() {
-        return this.activePlayerID !== -1
-        ? this.players[this.activePlayerID]
-        : null 
+        return this.activePlayerId !== -1
+            ? this.players[this.activePlayerId]
+            : null
     }
 
     startGame() {
         console.log("Start")
+        if (this.field instanceof Field) this.field.clear() 
+        this.field = new Field(this.turn, this)
+        this.switchPlayer()
+        this.updateWinCombinations()
         this.isActive = true
     }
     stopGame() {
         console.log("Stop")
+        this.field.deactivate()
         this.isActive = false
     }
     switchPlayer() {
         console.log("Player switched")
-        this.activePlayerID = (this.activePlayer + 1) % 2
+        this.activePlayerId = (this.activePlayerId + 1) % this.players.length
     }
-    isActivePlayerWinner() {
+    updateWinCombinations() {
+        this.winCombinations = [[], [], [], [], []]
+        // заполняем колонки и диагонали
+        this.field.cells.forEach((line, lineId) => {
+            this.winCombinations[0].push(line[0])
+            this.winCombinations[1].push(line[1])
+            this.winCombinations[2].push(line[2])
+            this.winCombinations[3].push(line[lineId])
+            this.winCombinations[4].push(line[line.length - lineId - 1])
+        })
+        // заполняем строки
+        this.winCombinations = [
+            ...this.winCombinations,
+            ...this.field.cells
+        ]
+    }
+    getWinCombination() {
         if (this.activePlayer.filled.length < this.field.size) return false
-        return true
+        let combo = null
+        console.log(this.winCombinations)
+        this.winCombinations.forEach((combination) => {
+            let matches = 0
+            combination.forEach((cell) => {
+                if (this.activePlayer.filled.includes(cell)) ++matches
+                else return
+            })
+            if (matches === combination.length) {
+                combo = combination
+                return
+            } 
+        })
+        return combo
     }
+    // дз: добавляет победные классы клеткам комбинации
+    markWinCombo(winCombo) {}
     turn(cell) {
-        
+        if (!this.isActive) return
+
         cell.fill(this.activePlayer.img)
         this.activePlayer.filled.push(cell)
-        console.log(thiis.activePlayer.filled)
+        // console.log(this.activePlayer.filled)
 
-if (this.isActivePlayerWinner()) {
-    this.field.deactivate()
-    alert(`${this.activePlayer.name} is winner`)
-    return
-}
+        const winCombo = this.getWinCombination()
+        if (winCombo instanceof Array) {
+            this.markWinCombo()
+            this.stopGame()
+            setTimeout(() => {
+                alert(`${this.activePlayer.name} is winner!`)
+            }, 200)
+            return
+        }
 
         this.switchPlayer()
-        console.log(this.isActivePlayerWinner)
     }
 }
 
