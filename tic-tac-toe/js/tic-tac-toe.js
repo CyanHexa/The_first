@@ -2,6 +2,24 @@ const getElement = (selector) => {
     return document.querySelector(selector)
 }
 
+class InfoLabel {
+    element = getElement('#tic-tac-toe__info')
+
+    constructor() {}
+    
+    hasElement() {
+        return this.element instanceof HTMLElement
+    }
+
+    setWinner(winnerName) {}
+
+    setTurn(activePlayerName) {}
+    
+    setDraw() {}
+
+    setNotStarted() {}
+}
+
 class Cell {
     element = null
     className = 'tic-tac-toe__cell'
@@ -86,10 +104,20 @@ class Cell {
     }
 
     // дз
-    addWinClass() {}
+    addWinClass() {
+        if (this.element instanceof HTMLElement) {
+            if (this.element.classList.contains(this.winClassName)) return
+            this.element.classList.add(this.winClassName)
+        }
+    }
 
     // дз
-    removeWinClass() {}
+    removeWinClass() {
+        if (this.element instanceof HTMLElement) {
+            if (!this.element.classList.contains(this.winClassName)) return
+            this.element.classList.remove(this.winClassName)
+    }
+    }
 }
 
 // const cell = new Cell()
@@ -223,7 +251,13 @@ class Game {
         return combo
     }
     // дз: добавляет победные классы клеткам комбинации
-    markWinCombo(winCombo) {}
+    markWinCombo(winCombo) {
+        if (winCombo instanceof Array) {
+            winCombo.forEach((cell) => {
+                if (cell instanceof Cell) cell.addWinClass()
+            })
+        }
+    }
     turn(cell) {
         if (!this.isActive) return
 
@@ -233,7 +267,7 @@ class Game {
 
         const winCombo = this.getWinCombination()
         if (winCombo instanceof Array) {
-            this.markWinCombo()
+            this.markWinCombo(winCombo)
             this.stopGame()
             setTimeout(() => {
                 alert(`${this.activePlayer.name} is winner!`)
