@@ -1,0 +1,689 @@
+=======1. Блочные (div, p, h1):
+
+Занимают всю ширину.
+
+Перенос строки до и после.
+
+Можно задавать width, height, margin, padding.
+
+Строчные (span, a, strong):
+
+Занимают только нужное место.
+
+Нет переноса.
+
+width и height игнорируются.
+
+Разница: блочные создают «блок», строчные — часть строки.
+
+========2.Тэги списков в HTML
+Маркированный список (<ul>)
+Точки/кружки по умолчанию.
+
+Используется для неупорядоченных списков.
+
+Нумерованный список (<ol>)
+
+Цифры (1, 2, 3…) по умолчанию.
+
+Можно менять тип (type="A/a/I/i").
+
+Список определений (<dl>)
+
+html
+<dl>
+  <dt>Термин</dt>
+  <dd>Определение</dd>
+</dl>
+Для словарей/глоссариев.
+
+Отличие:
+
+<ul> — неупорядоченный, <ol> — с порядком, <dl> — пары "термин-описание".
+
+========5. <main> — 1 раз.
+
+<header>/<footer> — сколько угодно, но с семантической логикой.
+
+========6. Тег: <link rel="stylesheet" href="...">.
+
+Родитель: <head>.
+
+========7. Основной тег: <script>.
+
+Атрибут src для внешних файлов.
+
+=======8. pobedy32
+
+========9. Типы CSS-селекторов
+1. Простые
+По тегу (div), классу (.class), ID (#id).
+
+2. Атрибутные
+[attr], [attr="value"], [attr^="val"] (начинается с), [attr$="ue"] (заканчивается на).
+
+3. Комбинаторы
+Дочерний (parent > child), соседний (A + B), общий сосед (A ~ B), вложенный (A B).
+
+4. Псевдоклассы
+Состояния (:hover, :focus), позиционные (:nth-child(n), :first-child).
+
+5. Псевдоэлементы
+::before, ::after, ::first-line, ::selection.
+
+6. Универсальный
+* (все элементы).
+
+7. Групповые
+Перечисление (A, B, C).
+
+Специфичность: ID > класс/атрибут/псевдокласс > тег/псевдоэлемент.
+
+
+=======10.Формула: a, b, c, d (чем больше число — тем выше приоритет):
+
+a – !important (игнорируем, т.к. это не селектор).
+
+b – инлайн-стили (style="...").
+
+c – ID-селекторы (#id).
+
+d – классы/атрибуты/псевдоклассы (.class, [type="text"], :hover).
+
+e – теги/псевдоэлементы (div, ::before).
+
+Специфичность решает приоритет, а при равенстве — порядок в коде.
+
+=========11. Абсолютные единицы (фиксированные):
+px – пиксели (1px = 1 точка на экране).
+
+cm, mm, in – сантиметры, миллиметры, дюймы (для печати).
+
+pt – пункты (1/72 дюйма, для печати).
+
+Относительные единицы (зависят от контекста):
+% – % от размера родителя.
+
+em – от размера шрифта родителя (наследуется).
+
+rem – от размера шрифта <html> (базовый).
+
+vw, vh – 1% ширины/высоты окна.
+
+vmin, vmax – минимум/максимум из vw и vh.
+
+ch – ширина символа 0 в текущем шрифте.
+
+===========12ю Стили для отступов
+Внешние отступы (margin):
+
+margin-top, margin-right, margin-bottom, margin-left
+
+margin: сокращённая запись (например, margin: 10px 20px;).
+
+Внутренние отступы (padding):
+
+padding-top, padding-right, padding-bottom, padding-left
+
+padding: сокращённая запись (аналогично margin).
+
+Дополнительно:
+
+gap – расстояние между элементами в Flex/Grid.
+
+Стили оформления текста
+Основные:
+
+font-family – шрифт.
+
+font-size – размер.
+
+font-weight – жирность (bold, 400).
+
+font-style – наклон (italic).
+
+color – цвет текста.
+
+Дополнительные:
+
+text-align – выравнивание (left, center, right).
+
+text-decoration – подчёркивание (underline, none).
+
+line-height – межстрочный интервал.
+
+letter-spacing – расстояние между буквами.
+
+text-transform – регистр (uppercase, capitalize).
+
+Пример:
+
+css
+p {
+  font-family: Arial;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+===========13. Flexbox Layout
+Для контейнера (display: flex)
+flex-direction – направление (row, column, row-reverse).
+
+justify-content – выравнивание по главной оси (center, space-between).
+
+align-items – выравнивание по поперечной оси (center, stretch).
+
+flex-wrap – перенос строк (wrap, nowrap).
+
+gap – расстояние между элементами.
+
+Для элементов
+flex-grow – как элемент растёт (число).
+
+flex-shrink – как сжимается (число).
+
+flex-basis – базовый размер (auto, 100px).
+
+align-self – индивидуальное выравнивание (center, flex-start).
+
+Grid Layout
+Для контейнера (display: grid)
+grid-template-columns / grid-template-rows – размеры колонок/строк (1fr 200px).
+
+grid-template-areas – именованные области ("header header").
+
+gap – расстояние между ячейками.
+
+justify-items / align-items – выравнивание внутри ячеек.
+
+justify-content / align-content – выравнивание сетки, если она меньше контейнера.
+
+Для элементов
+grid-column / grid-row – позиция (1 / 3, span 2).
+
+grid-area – привязка к именованной области.
+
+justify-self / align-self – индивидуальное выравнивание.
+
+========14. Псевдоклассы (состояния элементов)
+:hover – при наведении курсора.
+
+:active – в момент клика.
+
+:focus – при фокусе (например, input).
+
+:visited – посещённая ссылка.
+
+:nth-child(n) – выбор по порядку (even, odd, 2n+1).
+
+:first-child, :last-child – первый/последний элемент.
+
+:not(selector) – исключение элементов.
+
+Псевдоэлементы (виртуальные части элемента)
+
+::before, ::after – вставка контента до/после элемента.
+
+::first-line – стиль первой строки текста.
+
+::first-letter – стиль первой буквы.
+
+::selection – стиль выделенного текста.
+
+=========16. Условные конструкции
+1. if...else
+javascript
+if (условие) {
+  // код, если true
+} else if (другое условие) {
+  // альтернатива
+} else {
+  // если все условия false
+}
+2. switch
+javascript
+switch (значение) {
+  case 'вариант1':
+    // код
+    break;
+  case 'вариант2':
+    // код
+    break;
+  default:
+    // если нет совпадений
+}
+3. Тернарный оператор (? :)
+javascript
+условие ? выражениеЕслиTrue : выражениеЕслиFalse;
+// Пример:
+const access = age >= 18 ? 'Доступ разрешён' : 'Доступ запрещён';
+Циклы
+1. for
+javascript
+for (let i = 0; i < 10; i++) {
+  console.log(i); // 0, 1, 2...9
+}
+2. while
+javascript
+let i = 0;
+while (i < 5) {
+  console.log(i); // 0, 1, 2...4
+  i++;
+}
+3. do...while
+javascript
+let i = 0;
+do {
+  console.log(i); // 0, 1, 2...4
+  i++;
+} while (i < 5);
+// Отличие от while: выполнится хотя бы 1 раз.
+4. for...of (для массивов, строк)
+javascript
+const arr = [10, 20, 30];
+for (const item of arr) {
+  console.log(item); // 10, 20, 30
+}
+5. for...in (для объектов)
+javascript
+const obj = { a: 1, b: 2 };
+for (const key in obj) {
+  console.log(key, obj[key]); // 'a 1', 'b 2'
+}
+Управление циклами
+break – выход из цикла.
+
+continue – переход к следующей итерации.
+
+Пример:
+
+javascript
+for (let i = 0; i < 10; i++) {
+  if (i === 5) break; // цикл прервётся на 5
+  if (i % 2 === 0) continue; // пропустит чётные
+  console.log(i); // 1, 3
+}
+Когда что использовать
+Условия:
+
+if...else – для сложных проверок.
+
+switch – для множества вариантов.
+
+Тернарник – для простых присваиваний.
+
+Циклы:
+
+for – когда известно число итераций.
+
+while – пока условие истинно.
+
+for...of – для перебора массивов.
+
+for...in – для объектов (но лучше Object.keys()).
+
+========17. 1. Создание функции
+Function Declaration (можно вызвать до объявления)
+javascript
+function sum(a, b) {
+  return a + b;
+}
+Function Expression (создаётся при выполнении кода)
+javascript
+const sum = function(a, b) {
+  return a + b;
+};
+Стрелочная функция (ES6, нет своего this)
+javascript
+const sum = (a, b) => a + b;
+// Или с фигурными скобками:
+const sum = (a, b) => {
+  return a + b;
+};
+2. Вызов функции
+javascript
+sum(2, 3); // 5
+3. Передача аргументов
+Функции принимают аргументы через параметры:
+
+javascript
+function greet(name, age) {
+  console.log(`Привет, ${name}! Тебе ${age} лет.`);
+}
+greet("Анна", 25); // Привет, Анна! Тебе 25 лет.
+Значения по умолчанию (ES6)
+javascript
+function greet(name = "Гость", age = 18) {
+  console.log(`Привет, ${name}! Тебе ${age} лет.`);
+}
+greet(); // Привет, Гость! Тебе 18 лет.
+4. Возврат результата
+Используется return. Если его нет, функция вернёт undefined.
+
+javascript
+function multiply(a, b) {
+  return a * b;
+}
+const result = multiply(3, 4); // 12
+Пример без return
+javascript
+function noReturn() {
+  // ничего не возвращает
+}
+console.log(noReturn()); // undefined
+5. Особенности
+Аргументы vs Параметры:
+
+Параметры — это переменные в объявлении функции (a, b).
+
+Аргументы — конкретные значения, передаваемые при вызове (2, 3).
+
+Псевдомассив arguments (устарел, лучше использовать ...rest):
+
+javascript
+function showArgs() {
+  console.log(arguments); // { 0: 1, 1: 2, ... }
+}
+showArgs(1, 2);
+Оператор ...rest (ES6) для неограниченного числа аргументов:
+
+javascript
+function sumAll(...numbers) {
+  return numbers.reduce((acc, num) => acc + num, 0);
+}
+sumAll(1, 2, 3); // 6
+Итог
+Создать: function, const func = () => {}.
+
+Вызвать: func().
+
+Аргументы: передаются в скобках, принимаются как параметры.
+
+Результат: возвращается через return.
+
+Пример стрелочной функции:
+
+javascript
+const square = x => x * x;
+square(5); // 25
+
+======18. Основные операции с массивами в JavaScript
+1. Получение элемента по индексу
+javascript
+const arr = ['a', 'b', 'c'];
+console.log(arr[0]); // 'a' (индексы с 0)
+console.log(arr.at(-1)); // 'c' (ES2022, отрицательные индексы с конца)
+2. Длина массива
+javascript
+console.log(arr.length); // 3
+Добавление элементов
+В конец массива
+javascript
+arr.push('d'); // ['a', 'b', 'c', 'd']
+В начало массива
+javascript
+arr.unshift('x'); // ['x', 'a', 'b', 'c']
+В середину (по индексу)
+javascript
+arr.splice(2, 0, 'y'); // ['a', 'b', 'y', 'c'] (вставляет на позицию 2)
+Удаление элементов
+С конца
+javascript
+arr.pop(); // Удаляет 'c', возвращает его
+С начала
+javascript
+arr.shift(); // Удаляет 'a', возвращает его
+По индексу
+javascript
+arr.splice(1, 1); // Удаляет 1 элемент с индекса 1 (['a', 'c'])
+Особые методы
+concat(): объединяет массивы.
+
+javascript
+const newArr = arr.concat(['d', 'e']); // ['a', 'b', 'c', 'd', 'e']
+slice(start, end): копирует часть массива.
+
+javascript
+const subArr = arr.slice(1, 3); // ['b', 'c'] (индекс 3 не включается)
+...spread (ES6): создаёт копию/объединяет.
+
+javascript
+const copy = [...arr]; // Копия массива
+Проверка на массив
+javascript
+Array.isArray(arr); // true
+Итог
+Доступ: arr[index], arr.length.
+
+Добавить: push(), unshift(), splice().
+
+Удалить: pop(), shift(), splice().
+
+Копирование: slice(), ...spread.
+
+Пример:
+
+javascript
+const fruits = ['яблоко', 'груша'];
+fruits.push('апельсин'); // ['яблоко', 'груша', 'апельсин']
+console.log(fruits.length); // 3
+
+==============19. Основные операции с массивами в JavaScript
+1. Получение элемента по индексу
+javascript
+const arr = ['a', 'b', 'c'];
+console.log(arr[0]); // 'a' (индексы с 0)
+console.log(arr.at(-1)); // 'c' (ES2022, отрицательные индексы с конца)
+2. Длина массива
+javascript
+console.log(arr.length); // 3
+Добавление элементов
+В конец массива
+javascript
+arr.push('d'); // ['a', 'b', 'c', 'd']
+В начало массива
+javascript
+arr.unshift('x'); // ['x', 'a', 'b', 'c']
+В середину (по индексу)
+javascript
+arr.splice(2, 0, 'y'); // ['a', 'b', 'y', 'c'] (вставляет на позицию 2)
+Удаление элементов
+С конца
+javascript
+arr.pop(); // Удаляет 'c', возвращает его
+С начала
+javascript
+arr.shift(); // Удаляет 'a', возвращает его
+По индексу
+javascript
+arr.splice(1, 1); // Удаляет 1 элемент с индекса 1 (['a', 'c'])
+Особые методы
+concat(): объединяет массивы.
+
+javascript
+const newArr = arr.concat(['d', 'e']); // ['a', 'b', 'c', 'd', 'e']
+slice(start, end): копирует часть массива.
+
+javascript
+const subArr = arr.slice(1, 3); // ['b', 'c'] (индекс 3 не включается)
+...spread (ES6): создаёт копию/объединяет.
+
+javascript
+const copy = [...arr]; // Копия массива
+Проверка на массив
+javascript
+Array.isArray(arr); // true
+Итог
+Доступ: arr[index], arr.length.
+
+Добавить: push(), unshift(), splice().
+
+Удалить: pop(), shift(), splice().
+
+Копирование: slice(), ...spread.
+===============20. Классы в JavaScript (ES6+)
+Классы — это синтаксический сахар над прототипным наследованием, позволяющий удобно создавать объекты с общими методами и свойствами.
+
+1. Создание класса
+
+2. Использование (создание экземпляра)
+
+Для чего нужны?
+Инкапсуляция — объединение данных и методов.
+
+Повторное использование кода (наследование).
+
+Читаемость — структура ближе к ООП.
+
+Ключевые возможности
+Наследование (extends)
+
+Геттеры/сеттеры
+
+Принадлежат классу, а не экземплярам:
+
+Отличия от функций-конструкторов
+До ES6 использовали так:
+
+
+Плюсы классов:
+
+Чище синтаксис.
+
+Поддержка super, static, extends.
+
+Более понятная структура.
+
+Пример реального использования
+
+Итог
+Создание: class Name { constructor() { ... } }.
+
+Экземпляры: new Class().
+
+Наследование: extends + super().
+
+Инкапсуляция: геттеры/сеттеры, приватные поля (#field в ES2022+).
+
+Классы упрощают работу с ООП в JavaScript!
+
+
+
+==================================================================================
+==================================================================================
+==================================================================================
+
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма авторизации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .auth-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form class="auth-form" id="loginForm" method="POST">
+        <h3>Авторизация</h3>
+        <div class="form-group">
+            <label for="username">Логин</label>
+            <input type="text" id="username" name="username" placeholder="Введите ваш логин" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить валидацию перед отправкой
+            
+            // Отправка формы на сервер
+            const formData = new FormData(this);
+            
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Успешно:', data);
+                // Обработка успешной авторизации
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                // Обработка ошибки
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
